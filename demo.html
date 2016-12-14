@@ -1,0 +1,612 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><title>Oracle Database Structure Check Report</title>
+</head>
+<body><style type="text/css">
+            body.awr {font:bold 10pt Arial,Helvetica,Geneva,sans-serif;color:black;}
+            pre.awr  {font:10pt Courier;color:black; background:White;}
+            h1.awr   {font:bold 20pt Arial,Helvetica,Geneva,sans-serif;color:#336699;border-bottom:1px solid #cccc99;margin-top:0pt; margin-bottom:0pt;padding:0px 0px 0px 0px;}
+            h2.awr   {font:bold 18pt Arial,Helvetica,Geneva,sans-serif;color:#336699;margin-top:4pt; margin-bottom:0pt;}
+            h3.awr   {font:bold 16pt Arial,Helvetica,Geneva,sans-serif;color:#336699;margin-top:4pt; margin-bottom:0pt;}
+            h4.awr   {font:bold 14pt Arial,Helvetica,Geneva,sans-serif;color:#336699;margin-top:4pt; margin-bottom:0pt;}
+            h5.awr   {font:bold 12pt Arial,Helvetica,Geneva,sans-serif;color:#336699;margin-top:4pt; margin-bottom:0pt;}
+            h6.awr   {font:bold 10pt Arial,Helvetica,Geneva,sans-serif;color:#336699;margin-top:4pt; margin-bottom:0pt;}
+            h7.awr   {font: 10pt Arial,Helvetica,Geneva,sans-serif; color:#336699;margin-top:4pt; margin-bottom:0pt;}
+            li.awr   {font:bold 12pt Arial,Helvetica,Geneva,sans-serif; color:black; background:White;}
+            th.awrnobg  {font:bold 10pt Arial,Helvetica,Geneva,sans-serif; color:black; background:White;padding-left:4px; padding-right:4px;padding-bottom:2px}
+            td.awrbg    {font:bold 10pt Arial,Helvetica,Geneva,sans-serif; color:White; background:#0066CC;padding-left:4px; padding-right:4px;padding-bottom:2px}
+            td.awrnc    {font:10pt Arial,Helvetica,Geneva,sans-serif;color:black;background:White;vertical-align:top;}
+            td.awrc     {font:10pt Arial,Helvetica,Geneva,sans-serif;color:black;background:#FFFFCC; vertical-align:top;}
+            a.awr       {font:bold 10pt Arial,Helvetica,sans-serif;color:#663300; vertical-align:top;margin-top:0pt; margin-bottom:0pt;}
+            </style><SCRIPT>
+            function isHidden(oDiv,oTab){
+              var vDiv = document.getElementById(oDiv);
+              var vTab = document.getElementById(oTab);
+              vDiv.innerHTML=(vTab.style.display == 'none')?"<h5 class='awr'>-</h5>":"<h5 class='awr'>+</h5>";
+              vTab.style.display = (vTab.style.display == 'none')?'table':'none';
+            }
+            </SCRIPT><head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            </head><h1 class="awr">Oracle数据库结构审核报告</h1>
+<br />
+<h5 class="awr">数据库信息</h5>
+<table width="800" border="1"><tr><td align="center" class="awrbg">数据库IP/域名</td>
+<td align="center" class="awrbg">数据库名</td>
+<td align="center" class="awrbg">分析用户名</td>
+<td align="center" class="awrbg">分析时间</td>
+<td align="center" class="awrbg">总体得分</td>
+<td align="center" class="awrbg">满分</td>
+<td align="center" class="awrbg">合格率(%)</td>
+</tr>
+<tr><td align="right" class="awrc">127.0.0.1</td>
+<td align="right" class="awrc">testdb</td>
+<td align="right" class="awrc">demo</td>
+<td align="right" class="awrc">2015-07-14</td>
+<td align="right" class="awrc">66.7</td>
+<td align="right" class="awrc">122</td>
+<td align="right" class="awrc">54.67</td>
+</tr>
+</table>
+<br />
+<h5 class="awr">规则列表</h5>
+<table width="1200" border="1"><tr><td align="center" class="awrbg">规则名称</td>
+<td align="center" class="awrbg">规则描述</td>
+<td align="center" class="awrbg">规则状态</td>
+<td align="center" class="awrbg">参数1</td>
+<td align="center" class="awrbg">参数描述1</td>
+<td align="center" class="awrbg">参数2</td>
+<td align="center" class="awrbg">参数描述2</td>
+<td align="center" class="awrbg">参数3</td>
+<td align="center" class="awrbg">参数描述3</td>
+<td align="center" class="awrbg">扣分阀值</td>
+<td align="center" class="awrbg">扣分上限</td>
+<td align="center" class="awrbg">实际扣分</td>
+</tr>
+<tr><td align="right" class="awrc"><a href="#rule01" class="awr">rule01</a>
+</td>
+<td align="right" class="awrc">超过指定规模且没有分区的表</td>
+<td align="right" class="awrc">ON</td>
+<td align="right" class="awrc">2</td>
+<td align="right" class="awrc">表大小(GB)</td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc">1</td>
+<td align="right" class="awrc">10</td>
+<td align="right" class="awrc">0.0</td>
+</tr>
+<tr><td align="right" class="awrnc"><a href="#rule02" class="awr">rule02</a>
+</td>
+<td align="right" class="awrnc">大于阀值数量字段的表</td>
+<td align="right" class="awrnc">ON</td>
+<td align="right" class="awrnc">30</td>
+<td align="right" class="awrnc">字段数</td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc">0.5</td>
+<td align="right" class="awrnc">10</td>
+<td align="right" class="awrnc">0.0</td>
+</tr>
+<tr><td align="right" class="awrc"><a href="#rule03" class="awr">rule03</a>
+</td>
+<td align="right" class="awrc">包含有大字段类型的表</td>
+<td align="right" class="awrc">ON</td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc">0.3</td>
+<td align="right" class="awrc">3</td>
+<td align="right" class="awrc">1.8</td>
+</tr>
+<tr><td align="right" class="awrnc"><a href="#rule04" class="awr">rule04</a>
+</td>
+<td align="right" class="awrnc">没有主键的表</td>
+<td align="right" class="awrnc">ON</td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc">1</td>
+<td align="right" class="awrnc">10</td>
+<td align="right" class="awrnc">10.0</td>
+</tr>
+<tr><td align="right" class="awrc"><a href="#rule05" class="awr">rule05</a>
+</td>
+<td align="right" class="awrc">外键没有索引的表</td>
+<td align="right" class="awrc">ON</td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc">1</td>
+<td align="right" class="awrc">10</td>
+<td align="right" class="awrc">10.0</td>
+</tr>
+<tr><td align="right" class="awrnc"><a href="#rule06" class="awr">rule06</a>
+</td>
+<td align="right" class="awrnc">单表或单分区记录数量过大</td>
+<td align="right" class="awrnc">ON</td>
+<td align="right" class="awrnc">10000000</td>
+<td align="right" class="awrnc">记录数</td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc">0.5</td>
+<td align="right" class="awrnc">3</td>
+<td align="right" class="awrnc">0.0</td>
+</tr>
+<tr><td align="right" class="awrc"><a href="#rule07" class="awr">rule07</a>
+</td>
+<td align="right" class="awrc">分区数量过多</td>
+<td align="right" class="awrc">ON</td>
+<td align="right" class="awrc">200</td>
+<td align="right" class="awrc">分区个数</td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc">0.5</td>
+<td align="right" class="awrc">3</td>
+<td align="right" class="awrc">0.0</td>
+</tr>
+<tr><td align="right" class="awrnc"><a href="#rule08" class="awr">rule08</a>
+</td>
+<td align="right" class="awrnc">分区表数量过多</td>
+<td align="right" class="awrnc">ON</td>
+<td align="right" class="awrnc">10</td>
+<td align="right" class="awrnc">分区表个数</td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc">1</td>
+<td align="right" class="awrnc">5</td>
+<td align="right" class="awrnc">0.0</td>
+</tr>
+<tr><td align="right" class="awrc"><a href="#rule09" class="awr">rule09</a>
+</td>
+<td align="right" class="awrc">复合分区数量过多</td>
+<td align="right" class="awrc">ON</td>
+<td align="right" class="awrc">200</td>
+<td align="right" class="awrc">复合分区个数</td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc">0.5</td>
+<td align="right" class="awrc">3</td>
+<td align="right" class="awrc">0.0</td>
+</tr>
+<tr><td align="right" class="awrnc"><a href="#rule10" class="awr">rule10</a>
+</td>
+<td align="right" class="awrnc">缓存过小的序列</td>
+<td align="right" class="awrnc">ON</td>
+<td align="right" class="awrnc">1</td>
+<td align="right" class="awrnc">缓存大小</td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc">1</td>
+<td align="right" class="awrnc">3</td>
+<td align="right" class="awrnc">0.0</td>
+</tr>
+<tr><td align="right" class="awrc"><a href="#rule11" class="awr">rule11</a>
+</td>
+<td align="right" class="awrc">存在存储过程及函数</td>
+<td align="right" class="awrc">ON</td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc">3</td>
+<td align="right" class="awrc">3</td>
+<td align="right" class="awrc">3.0</td>
+</tr>
+<tr><td align="right" class="awrnc"><a href="#rule12" class="awr">rule12</a>
+</td>
+<td align="right" class="awrnc">存在触发器</td>
+<td align="right" class="awrnc">ON</td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc">5</td>
+<td align="right" class="awrnc">5</td>
+<td align="right" class="awrnc">0.0</td>
+</tr>
+<tr><td align="right" class="awrc"><a href="#rule13" class="awr">rule13</a>
+</td>
+<td align="right" class="awrc">存在DBLINK</td>
+<td align="right" class="awrc">ON</td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc">10</td>
+<td align="right" class="awrc">10</td>
+<td align="right" class="awrc">0.0</td>
+</tr>
+<tr><td align="right" class="awrnc"><a href="#rule14" class="awr">rule14</a>
+</td>
+<td align="right" class="awrnc">组合索引数量过多或没有索引</td>
+<td align="right" class="awrnc">ON</td>
+<td align="right" class="awrnc">30</td>
+<td align="right" class="awrnc">组合索引百分比</td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc">0.1</td>
+<td align="right" class="awrnc">3</td>
+<td align="right" class="awrnc">0.0</td>
+</tr>
+<tr><td align="right" class="awrc"><a href="#rule15" class="awr">rule15</a>
+</td>
+<td align="right" class="awrc">索引数量过多</td>
+<td align="right" class="awrc">ON</td>
+<td align="right" class="awrc">3</td>
+<td align="right" class="awrc">索引个数</td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc">0.5</td>
+<td align="right" class="awrc">5</td>
+<td align="right" class="awrc">0.5</td>
+</tr>
+<tr><td align="right" class="awrnc"><a href="#rule16" class="awr">rule16</a>
+</td>
+<td align="right" class="awrnc">存在7天内没有使用的索引</td>
+<td align="right" class="awrnc">ON</td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc">1</td>
+<td align="right" class="awrnc">5</td>
+<td align="right" class="awrnc">5.0</td>
+</tr>
+<tr><td align="right" class="awrc"><a href="#rule17" class="awr">rule17</a>
+</td>
+<td align="right" class="awrc">字段重复索引</td>
+<td align="right" class="awrc">ON</td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc">0.3</td>
+<td align="right" class="awrc">3</td>
+<td align="right" class="awrc">0.0</td>
+</tr>
+<tr><td align="right" class="awrnc"><a href="#rule18" class="awr">rule18</a>
+</td>
+<td align="right" class="awrnc">存在全局分区索引</td>
+<td align="right" class="awrnc">ON</td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc">0.3</td>
+<td align="right" class="awrnc">3</td>
+<td align="right" class="awrnc">0.0</td>
+</tr>
+<tr><td align="right" class="awrc"><a href="#rule19" class="awr">rule19</a>
+</td>
+<td align="right" class="awrc">记录长度定义过长</td>
+<td align="right" class="awrc">ON</td>
+<td align="right" class="awrc">0.5</td>
+<td align="right" class="awrc">记录定义长度与实际存储长度占比</td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc"></td>
+<td align="right" class="awrc">0.5</td>
+<td align="right" class="awrc">5</td>
+<td align="right" class="awrc">5.0</td>
+</tr>
+<tr><td align="right" class="awrnc"><a href="#rule20" class="awr">rule20</a>
+</td>
+<td align="right" class="awrnc">不包含时间戳字段的表</td>
+<td align="right" class="awrnc">ON</td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc"></td>
+<td align="right" class="awrnc">1</td>
+<td align="right" class="awrnc">10</td>
+<td align="right" class="awrnc">10.0</td>
+</tr>
+<tr><td align="right" class="awrc"><a href="#rule21" class="awr">rule21</a>
+</td>
+<td align="right" class="awrc">表字段类型不匹配</td>
+<td align="right" class="awrc">ON</td>
+<td align="right" class="awrc">10000</td>
+<td align="right" class="awrc">是否采样阈值(记录数)</td>
+<td align="right" class="awrc">20</td>
+<td align="right" class="awrc">非重复值阈值(排查枚举)</td>
+<td align="right" class="awrc">200</td>
+<td align="right" class="awrc">返回记录数上限</td>
+<td align="right" class="awrc">0.5</td>
+<td align="right" class="awrc">10</td>
+<td align="right" class="awrc">10.0</td>
+</tr>
+</table>
+<br />
+<div id="main" style="height:400px;width:800px"></div><script src="./js/dist/echarts.js"></script><script type="text/javascript">require.config({ paths: { echarts: './js/dist' }});require(['echarts','echarts/chart/pie'],function (ec) {var myChart = ec.init(document.getElementById('main')); var option = {tooltip : {trigger: 'item',formatter: "{a} <br/>{b} : {c} ({d}%)"},legend: {orient : 'vertical',x : 'right',data:['rule01','rule02','rule03','rule04','rule05','rule06','rule07','rule08','rule09','rule10','rule11','rule12','rule13','rule14','rule15','rule16','rule17','rule18','rule19','rule20','rule21']},calculable : true,series : [{name:'规则:',type:'pie',radius : '70%',center: ['30%', '60%'],data:[{value:0.0, name:'+超过指定规模且没有分区的表'},{value:0.0, name:'+大于阀值数量字段的表'},{value:1.8, name:'+包含有大字段类型的表'},{value:10.0, name:'+没有主键的表'},{value:10.0, name:'+外键没有索引的表'},{value:0.0, name:'+单表或单分区记录数量过大'},{value:0.0, name:'+分区数量过多'},{value:0.0, name:'+分区表数量过多'},{value:0.0, name:'+复合分区数量过多'},{value:0.0, name:'+缓存过小的序列'},{value:3.0, name:'+存在存储过程及函数'},{value:0.0, name:'+存在触发器'},{value:0.0, name:'+存在DBLINK'},{value:0.0, name:'+组合索引数量过多或没有索引'},{value:0.5, name:'+索引数量过多'},{value:5.0, name:'+存在7天内没有使用的索引'},{value:0.0, name:'+字段重复索引'},{value:0.0, name:'+存在全局分区索引'},{value:5.0, name:'+记录长度定义过长'},{value:10.0, name:'+不包含时间戳字段的表'},{value:10.0, name:'+表字段类型不匹配'}]}]};myChart.setOption(option);});</script><br />
+<h5 class="awr"> 规则 [ rule01——超过指定规模且没有分区的表 ]    (扣分:0.0)</h5>
+<a name="rule01"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名称</td>
+<td align="center" class="awrbg">表大小</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule02——大于阀值数量字段的表 ]    (扣分:0.0)</h5>
+<a name="rule02"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名称</td>
+<td align="center" class="awrbg">字段数</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule03——包含有大字段类型的表 ]    (扣分:1.8)</h5>
+<a name="rule03"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名称</td>
+<td align="center" class="awrbg">字段名</td>
+</tr>
+<tr><td align="right" class="awrc">TABLE</td>
+<td align="right" class="awrc">COLUMN</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule04——没有主键的表 ]    (扣分:10.0)</h5>
+<a name="rule04"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名称</td>
+</tr>
+<tr><td align="right" class="awrc">TABLE</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule05——外键没有索引的表 ]    (扣分:10.0)</h5>
+<a name="rule05"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名称</td>
+<td align="center" class="awrbg">字段名</td>
+</tr>
+<tr><td align="right" class="awrc">TABLE</td>
+<td align="right" class="awrc">COLUMN</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule06——单表或单分区记录数量过大 ]    (扣分:0.0)</h5>
+<a name="rule06"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名称</td>
+<td align="center" class="awrbg">数据量</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule07——分区数量过多 ]    (扣分:0.0)</h5>
+<a name="rule07"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名</td>
+<td align="center" class="awrbg">分区数量</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule08——分区表数量过多 ]    (扣分:0.0)</h5>
+<a name="rule08"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule09——复合分区数量过多 ]    (扣分:0.0)</h5>
+<a name="rule09"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名:分区名</td>
+<td align="center" class="awrbg">子分区数量</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule10——缓存过小的序列 ]    (扣分:0.0)</h5>
+<a name="rule10"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">序列名称</td>
+<td align="center" class="awrbg">缓存大小</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule11——存在存储过程及函数 ]    (扣分:3.0)</h5>
+<a name="rule11"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">存储过程函数名称</td>
+</tr>
+<tr><td align="right" class="awrc">FUN1</td>
+<td align="right" class="awrc">FUNCTION</td>
+</tr>
+<tr><td align="right" class="awrnc">PROC1</td>
+<td align="right" class="awrnc">PROCEDURE</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule12——存在触发器 ]    (扣分:0.0)</h5>
+<a name="rule12"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">触发器名称</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule13——存在DBLINK ]    (扣分:0.0)</h5>
+<a name="rule13"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">dblink名字</td>
+<td align="center" class="awrbg">访问的用户</td>
+<td align="center" class="awrbg">访问的主机</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule14——组合索引数量过多或没有索引 ]    (扣分:0.0)</h5>
+<a name="rule14"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名</td>
+<td align="center" class="awrbg">索引名</td>
+<td align="center" class="awrbg">列名</td>
+<td align="center" class="awrbg">列顺序</td>
+</tr>
+<tr><td align="right" class="awrc">TABLE1</td>
+<td align="right" class="awrc">INDEX1</td>
+<td align="right" class="awrc">COLUMN1</td>
+<td align="right" class="awrc">1</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule15——索引数量过多 ]    (扣分:0.5)</h5>
+<a name="rule15"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名</td>
+<td align="center" class="awrbg">索引数</td>
+</tr>
+<tr><td align="right" class="awrc">TABLE</td>
+<td align="right" class="awrc">4</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule16——存在7天内没有使用的索引 ]    (扣分:5.0)</h5>
+<a name="rule16"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名</td>
+<td align="center" class="awrbg">索引名</td>
+</tr>
+<tr><td align="right" class="awrc">TABLE</td>
+<td align="right" class="awrc">INDEX</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule17——字段重复索引 ]    (扣分:0.0)</h5>
+<a name="rule17"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名</td>
+<td align="center" class="awrbg">字段名</td>
+<td align="center" class="awrbg">重复次数</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule18——存在全局分区索引 ]    (扣分:0.0)</h5>
+<a name="rule18"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名</td>
+<td align="center" class="awrbg">索引名</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule19——记录长度定义过长 ]    (扣分:5.0)</h5>
+<a name="rule19"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名</td>
+<td align="center" class="awrbg">行记录定义字节数</td>
+<td align="center" class="awrbg">记录实际平均存放字节数</td>
+</tr>
+<tr><td align="right" class="awrc">TABLE</td>
+<td align="right" class="awrc">946.67</td>
+<td align="right" class="awrc">172</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule20——不包含时间戳字段的表 ]    (扣分:10.0)</h5>
+<a name="rule20"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名</td>
+</tr>
+<tr><td align="right" class="awrc">TABLE</td>
+</tr>
+</table>
+<br />
+<h5 class="awr"> 规则 [ rule21——表字段类型不匹配 ]    (扣分:10.0)</h5>
+<a name="rule21"></a>
+<table width="800" border="1"><tr><td align="center" class="awrbg">表名称</td>
+<td align="center" class="awrbg">表字段名</td>
+<td align="center" class="awrbg">字段定义类型</td>
+<td align="center" class="awrbg">字段实际类型</td>
+</tr>
+<tr><td align="right" class="awrc">TABLE</td>
+<td align="right" class="awrc">COLUMN</td>
+<td align="right" class="awrc">VARCHAR2</td>
+<td align="right" class="awrc">NUMBER</td>
+</tr>
+</table>
+<br />
+<h1 class="awr"></h1>
+<br />
+<li class="awr"> 规则 - rule01</li>
+<h5 class="awr">   表的规模过大，将影响表的访问效率、增加维护成本等。常见的解决方案就是使用分区表，将大表转换为分区表。</h5>
+<br />
+<li class="awr"> 规则 - rule02</li>
+<h5 class="awr">   字段过多，会导致记录长度过大。单个数据存储单元将保存的记录数过少，影响访问效率。</h5>
+<br />
+<li class="awr"> 规则 - rule03</li>
+<h5 class="awr">   大对象字段是关系型数据库中应尽量避免的。如有需要，可考虑在外部进行存储。</h5>
+<br />
+<li class="awr"> 规则 - rule04</li>
+<h5 class="awr">   主键是关系型数据库中唯一确定一条记录的依据，没有任何理由不定义主键。</h5>
+<br />
+<li class="awr"> 规则 - rule05</li>
+<h5 class="awr">   外键没有索引会导致主子表关联查询时，关联效率很低。</h5>
+<br />
+<li class="awr"> 规则 - rule06</li>
+<h5 class="awr">   控制单个表或单个分区的数据规模，提高单一对象的访问效率。如记录数过多，应考虑分库、分表、分区等策略。</h5>
+<br />
+<li class="awr"> 规则 - rule07</li>
+<h5 class="awr">   分区表中分区数量过多，将导致整体维护成本过高，可调整分区粒度。</h5>
+<br />
+<li class="awr"> 规则 - rule08</li>
+<h5 class="awr">   分区表过多，常见原因是大表较多。因根据需求，考虑进行垂直拆分，减小单库规模。</h5>
+<br />
+<li class="awr"> 规则 - rule09</li>
+<h5 class="awr">   同上面分区表数量过多的理由类似。</h5>
+<br />
+<li class="awr"> 规则 - rule10</li>
+<h5 class="awr">   系统默认会缓存20，如过小将导致频繁查询数据字典，影响并发能力。</h5>
+<br />
+<li class="awr"> 规则 - rule11</li>
+<h5 class="awr">   存储过程及函数，将影响数据库的异构迁移能力，并存在代码维护性较差等原因。</h5>
+<br />
+<li class="awr"> 规则 - rule12</li>
+<h5 class="awr">   触发器，将影响数据库的异构迁移能力。如有数据一致性维护需求，请从应用端给予考虑。</h5>
+<br />
+<li class="awr"> 规则 - rule13</li>
+<h5 class="awr">   不建议在一个数据库中访问其他数据库，请考虑在应用端解决。</h5>
+<br />
+<li class="awr"> 规则 - rule14</li>
+<h5 class="awr">   组合索引过多，将导致空间消耗较大、索引维护成本较高。应考虑构建战略性索引结构，不要针对每个需求都通过创建索引解决。</h5>
+<br />
+<li class="awr"> 规则 - rule15</li>
+<h5 class="awr">   索引可以提高访问速度，但数量过多将导致空间消耗过大，且索引维护成本较高，影响DML效率等问题。应控制索引数量。</h5>
+<br />
+<li class="awr"> 规则 - rule16</li>
+<h5 class="awr">   在数据库一段时间内，该索引没有被任何SQL语句使用。请评估此索引的有效性。</h5>
+<br />
+<li class="awr"> 规则 - rule17</li>
+<h5 class="awr">   一个字段被多个索引引用，请考虑构建策略。删除不必要的索引。</h5>
+<br />
+<li class="awr"> 规则 - rule18</li>
+<h5 class="awr">   全局分区索引，存在维护成本较高问题。当分区发生变化是，需要维护全局索引的有效性。</h5>
+<br />
+<li class="awr"> 规则 - rule19</li>
+<h5 class="awr">   记录定义长度与实际存储长度差异过大，请考虑字段类型定义是否合理，个别字段过长是否可分表存储。</h5>
+<br />
+<li class="awr"> 规则 - rule20</li>
+<h5 class="awr">   时间戳，是获取增量数据的一种方法。建议在表内增加创建时间、更新时间的时间戳字段。命名方式为CREATE_TIME、UPDATE_TIME。</h5>
+<br />
+<li class="awr"> 规则 - rule21</li>
+<h5 class="awr">   此规则会抽样部分数据，分析其定义类型与存储类型是否相符。常见问题如用数字、文本保存日期等。</h5>
+<br />
+</body>
+</html>
